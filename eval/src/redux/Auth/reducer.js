@@ -2,7 +2,7 @@ import { LOGIN_SUCCESS, LOGIN_FAILED } from "./actionTypes";
 
 const initState = {
     loading:false,
-    userRole: [],
+    userRole: "",
     error:false
 }
 export const reducer = (state = initState, { type, payload }) => {

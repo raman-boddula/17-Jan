@@ -1,8 +1,13 @@
 import { useSelector } from "react-redux"
+import { Navigate } from "react-router-dom";
+// import {authReducer} from "../redux/Auth/reducer"
 export const PrivateRoute = ({ children }) => {
-    const { role } = useSelector((state) => ({
-        email: state.authReducer.email,
-        role: state.authReducer.role
+    const { userRole } = useSelector((state) => ({
+        userRole: state.authReducer.userRole
     }))
-    if(role=="ADMIN")
+    console.log("role",userRole)
+    if (userRole==="") {
+        return <Navigate to="/login" />
+    }
+    return children
 }

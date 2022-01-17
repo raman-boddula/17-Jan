@@ -1,16 +1,20 @@
 import { Form, Input, Button, Checkbox, Select } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
-import { loginSuccess,loginError } from '../redux/Auth/actions';
+import { loginSuccess, loginError } from '../redux/Auth/actions';
+import { useNavigate } from 'react-router-dom';
 import React from "react";
 export const Login = () => {
     const [form, setForm] = React.useState([]);
+    const [role, setRole] = React.useState("");
     const { Option } = Select;
     const dispatch = useDispatch();
-
+    const navigate = useNavigate();
+   
+    // console.log(setRole)
     const handleChange = (e) => {
         // console.log(e.target)
         let {id, type, value} = e.target;
-        id=id==="basic_email"?"email":"role"
+        id=id==="basic_email"?"email":"password"
         setForm({ ...form, [id]: value });
     }
     const handleSubmit = (e) => {
@@ -22,7 +26,8 @@ export const Login = () => {
             headers: {
                 "Content-Type": "application/json"
             }
-        }).then(res => res.json()).then(res => dispatch(loginSuccess(form.password)));
+        }).then(res => res.json()).then(res => dispatch(loginSuccess(form)));
+        navigate(-1); 
     }
     return (
         <div>
@@ -54,7 +59,7 @@ export const Login = () => {
       <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
         <Checkbox>Remember me</Checkbox>
       </Form.Item>
-                <select name="role" onChange={handleChange}>
+                <select name="role" onChange={(e)=>setRole(e.target.value)}>
                     <option value="ADMIN">ADMIN</option>
                     <option value="CLIENT">CLIENT</option>  
                 </select>
