@@ -10,7 +10,7 @@ export const Login = () => {
     const handleChange = (e) => {
         // console.log(e.target)
         let {id, type, value} = e.target;
-        id=id==="basic_email"?"email":"password"
+        id=id==="basic_email"?"email":"role"
         setForm({ ...form, [id]: value });
     }
     const handleSubmit = (e) => {
@@ -22,7 +22,7 @@ export const Login = () => {
             headers: {
                 "Content-Type": "application/json"
             }
-        }).then(res=>res.json()).then(res=>dispatch(loginSuccess(form)))
+        }).then(res => res.json()).then(res => dispatch(loginSuccess(form.password)));
     }
     return (
         <div>

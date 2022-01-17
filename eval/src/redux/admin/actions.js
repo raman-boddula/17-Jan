@@ -5,9 +5,10 @@ export const addJobLoading = (data) => {
     type: ADD_JOB_LOADING,
   };
 };
-export const addJobSuccess = () => {
+export const addJobSuccess = (data) => {
     return {
-        type:ADD_JOB_SUCCESS,
+        type: ADD_JOB_SUCCESS,
+        payload:data
     }
 }
 export const addJobError = () => {
