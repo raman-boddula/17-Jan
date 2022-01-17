@@ -26,7 +26,7 @@ export const Login = () => {
             headers: {
                 "Content-Type": "application/json"
             }
-        }).then(res => res.json()).then(res => dispatch(loginSuccess(form)));
+        }).then(res => res.json()).then(res => dispatch(loginSuccess(role)));
         navigate(-1); 
     }
     return (

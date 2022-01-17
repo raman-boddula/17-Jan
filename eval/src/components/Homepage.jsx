@@ -16,11 +16,14 @@ export const Homepage = () => {
     console.log("jobss",Jobs)
     const dispatch = useDispatch();
     return (<div>
-        {Jobs.map((e, i) => (
+        {Jobs.length>0?Jobs.map((e, i) => (
             <div>
-                 
+                 <h1>{e.basic_company} || {e.basic_location} || {e.basic_salary}</h1>
+                 {/* <h1>{e.basic_job description}</h1> */}
+                 {/* <h1>{e.basic_job title}</h1> */}
+                
             </div>
-        ))}
+        )):null}
         <>
             {userRole==="ADMIN"?<Link to={`/addJobs`}><Button>ADD JOB</Button></Link>:null}
         </>
