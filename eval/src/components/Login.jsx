@@ -1,8 +1,12 @@
-import { Form, Input, Button, Checkbox ,Select} from 'antd';
+import { Form, Input, Button, Checkbox, Select } from 'antd';
+import { useSelector, useDispatch } from 'react-redux';
+import { loginSuccess,loginError } from '../redux/Auth/actions';
 import React from "react";
 export const Login = () => {
     const [form, setForm] = React.useState([]);
     const { Option } = Select;
+    const dispatch = useDispatch();
+
     const handleChange = (e) => {
         // console.log(e.target)
         let {id, type, value} = e.target;
@@ -18,7 +22,7 @@ export const Login = () => {
             headers: {
                 "Content-Type": "application/json"
             }
-        }).then(res=>res.json()).then(res=>console.log(res))
+        }).then(res=>res.json()).then(res=>dispatch(loginSuccess(form)))
     }
     return (
         <div>
@@ -50,10 +54,10 @@ export const Login = () => {
       <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
         <Checkbox>Remember me</Checkbox>
       </Form.Item>
-                {/* <select name="role" onChange={handleChange}>
+                <select name="role" onChange={handleChange}>
                     <option value="ADMIN">ADMIN</option>
                     <option value="CLIENT">CLIENT</option>  
-                </select> */}
+                </select>
       <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
                     <Button onClick={handleSubmit}type="primary" htmlType="submit">
           Submit
