@@ -1,16 +1,24 @@
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button, Checkbox ,Select} from 'antd';
 import React from "react";
 export const Login = () => {
-    const [form, setForm] = React.useState([])
+    const [form, setForm] = React.useState([]);
+    const { Option } = Select;
     const handleChange = (e) => {
         // console.log(e.target)
-        let {name, id, type, value} = e.target;
-        // id=type==="basic_email"?"email":"password"
+        let {id, type, value} = e.target;
+        id=id==="basic_email"?"email":"password"
         setForm({ ...form, [id]: value });
     }
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(form)
+        fetch("https://reqres.in/api/login", {
+            method: "POST",
+            body: JSON.stringify(form),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(res=>res.json()).then(res=>console.log(res))
     }
     return (
         <div>
@@ -42,7 +50,10 @@ export const Login = () => {
       <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
         <Checkbox>Remember me</Checkbox>
       </Form.Item>
-
+                {/* <select name="role" onChange={handleChange}>
+                    <option value="ADMIN">ADMIN</option>
+                    <option value="CLIENT">CLIENT</option>  
+                </select> */}
       <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
                     <Button onClick={handleSubmit}type="primary" htmlType="submit">
           Submit
