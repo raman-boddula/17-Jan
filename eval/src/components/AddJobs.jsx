@@ -1,7 +1,7 @@
 // name, job title, salary range, job description, location, job type (remote) and anything extra you want to add
 import React from "react";
 import { Form, Input, Button, Checkbox, Select } from 'antd';
-
+import {Link } from "react-router-dom"
 import { useDispatch,useSelector } from "react-redux";
 import { addJobError,addJobSuccess,addJobLoading,getJobError,getJobSuccess,getJobLoading } from "../redux/admin/actions";
 export const AddJobs = () => {
@@ -75,7 +75,8 @@ export const AddJobs = () => {
           Submit
         </Button>
       </Form.Item>
-    </Form>
+            </Form>
+            <Link to={"/"}><Button>HOME</Button></Link>
         </div>
     )
 }

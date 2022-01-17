@@ -13,7 +13,8 @@ export const Homepage = () => {
             Jobs : state.adminReducer.Jobs,
             error : state.adminReducer.error,
         }))
-    console.log("jobss",Jobs)
+    console.log("jobss", Jobs)
+    console.log("eve.holt@reqres.in",userRole)
     const dispatch = useDispatch();
     return (<div>
         {Jobs.length>0?Jobs.map((e, i) => (
@@ -25,7 +26,7 @@ export const Homepage = () => {
             </div>
         )):null}
         <>
-            {userRole==="ADMIN"?<Link to={`/addJobs`}><Button>ADD JOB</Button></Link>:null}
+            {userRole[0]==="ADMIN"?<Link to={`/addJobs`}><Button>ADD JOB</Button></Link>:null}
         </>
     </div>)
 }
