@@ -1,8 +1,9 @@
 import { APPLY_JOB_ERROR,GET_CJOB_ERROR,GET_CJOB_LOADING,GET_CJOB_SUCCESS,APPLY_JOB_SUCCESS, APPLY_JOB_LOADING } from "./actionTypes";
 
-export const applyJobSuccess = () => {
+export const applyJobSuccess = (data) => {
     return {
-            type:APPLY_JOB_SUCCESS
+      type: APPLY_JOB_SUCCESS,
+      payload:data
         }
 }
 export const applyJobError = () => {
@@ -15,9 +16,10 @@ export const applyJobLoading = () => {
     type: APPLY_JOB_LOADING,
   };
 };
-export const getCJobSuccess = () => {
+export const getCJobSuccess = (id) => {
   return {
     type: GET_CJOB_SUCCESS,
+    payload:id
   };
 };
 export const getCJobError = () => {

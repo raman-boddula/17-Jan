@@ -29,6 +29,7 @@ export const Login = () => {
         }).then(res => res.json()).then(res => dispatch(loginSuccess(role)));
         navigate(-1); 
     }
+  console.log("role in login",role)
     return (
         <div>
             <Form
@@ -37,7 +38,7 @@ export const Login = () => {
       wrapperCol={{ span: 16 }}
       initialValues={{ remember: true }}
       autoComplete="off"
-    >
+      >
       <Form.Item
         label="Username"
         name="email"

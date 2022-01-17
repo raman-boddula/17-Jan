@@ -1,5 +1,6 @@
 // name, job title, salary range, job description, location, job type (remote) and anything extra you want to add
 import React from "react";
+import {nanoid} from "nanoid";
 import { Form, Input, Button, Checkbox, Select } from 'antd';
 import {Link } from "react-router-dom"
 import { useDispatch,useSelector } from "react-redux";
@@ -8,9 +9,9 @@ export const AddJobs = () => {
     const [jobData, setJobData] = React.useState("");
      const handleChange = (e) => {
         console.log(e.target)
-        let {id, type, value} = e.target;
+        let {id, value} = e.target;
         // id=id==="basic_email"?"email":"role"
-        setJobData({ ...jobData, [id]: value });
+        setJobData({ ...jobData, [id]: value ,id:nanoid(5)});
     }
     const dispatch = useDispatch();
     const handleSubmit = (e) => {
